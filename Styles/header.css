@@ -1,0 +1,117 @@
+.top-header{
+    background-color: #1c1c1f;
+    padding: 22px 25px;
+    height: 30px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 20;
+}
+
+.left-section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.left-section-items{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style-type: none;
+    column-gap: 40px;
+
+    padding: 0;
+}
+
+.epic-games-logo-c{
+    width: 30px;
+}
+.epic-games-logo-c img{
+    width: 100%;
+}
+
+.store-c{
+    width: 56px;
+}
+.store-c img{
+    width: 100%;
+}
+
+
+.right-section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.right-section>div{
+    margin-left: 30px;
+}
+
+.right-section-mini{
+    display: none;
+}
+
+.hamburger-btn{
+    width: 20px;
+}
+
+.language-logo-c{
+    width: 20px;
+}
+
+.profile-box-c{
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+.profile-pic-c{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.profile-pic-c img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
+
+.download-button-c button{
+    width: 100px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: #26BBFF;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.download-button-c button:hover{
+    background-color: #52c8ff;
+}
+
+@media (max-width: 1024px){
+    .support-link{
+        display: none;
+    }
+    .distribute-link{
+        display: none;
+    }
+    .right-section{
+        display: none;
+    }
+    .right-section-mini{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 10px;
+    }
+    .right-section-mini button{
+        padding: 5px;
+    }
+}

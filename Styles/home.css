@@ -1,0 +1,249 @@
+/* bottom header */
+
+.bottom-header{
+    background-color: #101014;
+    /* background-color: lightblue; */
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    position: sticky;
+    left: 0;
+    right: 0;
+    top: 0;
+    
+    z-index: 10;
+}
+
+.bottom-header-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.bottom-right-section, .bottom-left-section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-bar-c{
+    margin-right: 20px;
+}
+.search-bar-c input{
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 12px;
+    border-radius: 20px;
+    background-color: #1d1d1d;
+}
+
+.cart-c{
+    margin-left: 20px;
+}
+
+/* main */
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 50px;
+
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 75%;
+}
+
+/* mobile promotions */
+
+.mobile-promotions{
+    width: 100%;
+    padding: 0 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 10px;
+
+    position: relative;
+}
+
+.mobile-promotion{
+    flex: 1;
+}
+.mobile-promotion img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* featuring games */
+
+.featuring-games{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    justify-content: space-around;
+    align-items: center;
+    column-gap: 15px;
+
+    width: 100%;
+    
+}
+
+.game-pic-c{
+    flex: 4;
+}
+.game-pic-c img{
+    width: 100%;
+    border-radius: 15px;
+}
+
+.games-list{
+    flex: 1;
+    font-size: 0.9em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 0.5em;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.game-item:hover{
+    background-color: #7a7a7a46;
+}
+
+.item-pic{
+    flex: 1;
+    margin-right: 10px;
+}
+.item-pic img{
+    width: 100%;
+    border-radius: 3px;
+}
+.item-name{
+    flex: 3;
+}
+
+/* new releases */
+
+.game-slide-c{
+    width: 100%;
+}
+
+.game-slide-header{
+    width: 100%;
+    margin-bottom: 1.4em;
+    font-weight: bold;
+    font-size: 20px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.browsing-btns button{
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    background-color: #2cbcf5;
+    color: white;
+    background-color: rgb(58, 58, 58);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.slide-items{
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: top;
+    justify-content: space-between;
+    column-gap: 18px;
+}
+
+@media (max-width: 1024px){
+    main{
+        max-width: 95%;
+    }
+    /* needs slide bar */
+    .slide-items{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.slide-item{
+    width: auto;
+}
+
+.slide-item-pic{
+    margin-bottom: 8px;
+    /* transition: filter 0.3s ease; */
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+/* FOR BRIGTENING EFFECT */
+/* .top-new-item-pic:hover{
+    filter: brightness(1.2);
+} */
+
+.slide-item-pic img{
+    border-radius: 8px;
+    width: 100%;
+}
+
+.slide-item-text{
+    margin-bottom: 16px;
+}
+
+.item-type{
+    font-size: 12px;
+    font-weight: bold;
+    color: gray;
+    margin-bottom: 8px;
+}
+
+.item-name{
+    font-weight: bold;
+}
+
+.slide-item-price-c{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.percentage-bubble{
+    background-color: #2cbcf5;
+    color: black;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
+.off-price .original-price{
+    text-decoration: line-through;
+    color: gray;
+    font-size: 15px;
+}
+
+.no-off{
+    text-decoration: none;
+    color: white;
+}
