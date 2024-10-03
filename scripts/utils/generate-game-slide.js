@@ -3,11 +3,11 @@ import { games } from "../../data/games-details.js";
 export function renderSlideGames(selectedItemsIds) {
     let gameString = '';
 
-    selectedItemsIds.forEach(item => {
+    selectedItemsIds.forEach(itemId => {
         let gameDetails = null;
 
         for (let i = 0; i < games.length; i++) {
-            if (item === games[i].id) {
+            if (itemId === games[i].id) {
                 gameDetails = games[i];
                 break;
             }
