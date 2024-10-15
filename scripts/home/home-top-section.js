@@ -6,7 +6,7 @@ import { renderSlideGames } from "../utils/generate-game-slide.js";
 
 const featured = ['game-red-dead-redemption', 'game-fortnite', 'game-fall-guys', 'game-zeniess-zone-zero', 'game-madden-nfl-25', 'game-black-myth-wukong' ];
 
-const discoverNew = ['game-black-myth-wukong', 'game-warhammer-40,000-space-marine-2'];
+const discoverNew = ['game-black-myth-wukong', 'game-warhammer-40,000-space-marine-2', 'game-fc-25'];
 
 const newReleases = ['game-need-for-speed-heat', 'game-battlefield-1', 'game-crosshair-x', 'game-madden-nfl-25', 'game-manor-lords'];
 
@@ -92,32 +92,23 @@ function generateFeaturedList(){
 }
 
 function generateDiscoverNew(){
-    const discoverNewHTML = document.querySelector('.js-discover-new-title');
-
-    discoverNewHTML.innerHTML = 'Discover Something New &gt;';
-
+    const discoverNewTitleHTML = document.querySelector('.js-discover-new-title');
+    discoverNewTitleHTML.innerHTML = 'Discover Something New &gt;';
     const discoverNewItemsHTML = document.querySelector('.js-discover-new-items');
-
     discoverNewItemsHTML.innerHTML = renderSlideGames(discoverNew);
 }
 
 function generateFeaturedDiscounts() {
-    const featuredDiscountsHTML = document.querySelector('.js-featured-discounts-title');
-
-    featuredDiscountsHTML.innerHTML = 'Featured Discounts &gt';
-
+    const featuredDiscountsTitleHTML = document.querySelector('.js-featured-discounts-title');
+    featuredDiscountsTitleHTML.innerHTML = 'Featured Discounts &gt';
     const discoverNewItemsHTML = document.querySelector('.js-featured-discounts-items');
-
     discoverNewItemsHTML.innerHTML = renderSlideGames(featuredDiscounts);
 }
 
 function generateTopNewReleases(){
-    let topNewTitleHTML = document.querySelector('.js-top-new-title');
-
+    const topNewTitleHTML = document.querySelector('.js-top-new-title');
     topNewTitleHTML.innerHTML = `Top New Releases &gt;`
-
-    let topNewItemsHTML = document.querySelector('.js-top-new-items');
-
+    const topNewItemsHTML = document.querySelector('.js-top-new-items');
     topNewItemsHTML.innerHTML += renderSlideGames(newReleases);
 }
 

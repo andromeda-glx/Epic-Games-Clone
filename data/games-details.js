@@ -97,6 +97,14 @@ export const games =
         featuredImage: `${featuredFileLocation}/fall-guys-featured.jpg`
     },
     {
+        id: 'game-fc-25',
+        image: `${thumbnailFileLocation}/fc-25.avif`,
+        name: 'EA SPORTS FC 25',
+        type: 'Base Game',
+        priceCents: 6999,
+        discountRate: 0
+    },
+    {
         id: 'game-fortnite',
         image: `${thumbnailFileLocation}/fortnite.webp`,
         name: 'Fortnite',
