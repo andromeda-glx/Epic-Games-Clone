@@ -84,7 +84,7 @@ function generateFeaturedList(){
         `;
     });
 
-    progressSlideShow(2000);
+    progressSlideShow(8000);
 
     // setInterval(() => {
     //     progressSlideShow(1000);
