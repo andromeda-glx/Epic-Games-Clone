@@ -120,9 +120,27 @@ main{
     padding: 0.5em;
     border-radius: 10px;
     cursor: pointer;
+    position: relative;
 }
-.game-item:hover{
+.game-item:hover, .game-item-select{
     background-color: #7a7a7a46;
+}
+
+.progress-bar{
+    position: absolute;
+    height: 100%;
+    background-color: rgba(161, 161, 161, 0.15);
+    border-radius: 5px;
+}
+
+.start-progress{
+    animation-name: loading;
+    animation-duration: 10s;
+}
+
+@keyframes loading {
+    from {width: 0}
+    to {width: 100%;}
 }
 
 .item-pic{

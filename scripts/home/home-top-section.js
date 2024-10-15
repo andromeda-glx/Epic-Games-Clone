@@ -1,10 +1,10 @@
 import { mobilePromotions } from "../../data/mobile-promotions/mobile-promotions.js";
-import { games } from "../../data/games-details.js";
+import { games, findGameById } from "../../data/games-details.js";
 import { specialEvents } from "../../data/event-details.js";
 import { renderSlideGames } from "../utils/generate-game-slide.js";
 
 
-const featured = ['game-fortnite', 'game-fall-guys', 'event-epic-savings', 'game-zeniess-zone-zero', 'game-madden-nfl-25', 'game-black-myth-wukong' ];
+const featured = ['game-red-dead-redemption', 'game-fortnite', 'game-fall-guys', 'game-zeniess-zone-zero', 'game-madden-nfl-25', 'game-black-myth-wukong' ];
 
 const discoverNew = ['game-black-myth-wukong', 'game-warhammer-40,000-space-marine-2'];
 
@@ -12,8 +12,11 @@ const newReleases = ['game-need-for-speed-heat', 'game-battlefield-1', 'game-cro
 
 const featuredDiscounts = ['game-the-crew-2', 'game-god-of-war', 'game-days-gone', 'game-horizon-zero-dawn', 'game-the-last-of-us-part-i'];
 
+let selectedGameItemIndex = 0;
+
 export function renderTopSectionHTML(){
     generateMobilePromotions();
+    generateFeaturedGame(featured[0]);
     generateFeaturedList();
     generateDiscoverNew();
     generateFeaturedDiscounts();
@@ -25,12 +28,22 @@ function generateMobilePromotions() {
 
     mobilePromotions.forEach(promoItem => {
         mobilePromotionsHTML.innerHTML +=
-            `
+        `
             <div class="mobile-promotion" data-mobile-promo-id="${promoItem.id}">
                 <img src="${promoItem.image}" alt="">
             </div>
         `
     });
+}
+
+function generateFeaturedGame(gameId){
+    const featuredGame = findGameById(gameId);
+    const featuredGameHTML = document.querySelector('.game-pic-c');
+
+    featuredGameHTML.innerHTML = 
+    `
+        <img src="${featuredGame.featuredImage}" alt="">
+    `;
 }
 
 function generateFeaturedList(){
@@ -59,6 +72,8 @@ function generateFeaturedList(){
         featuredGamesListHTML.innerHTML += 
         `
                 <div class="game-item" data-game-id="${itemDetails.id}">
+                    <span class="progress-bar">
+                    </span>
                     <div class="item-pic">
                         <img src="${itemDetails.image}" alt="">
                     </div>
@@ -68,6 +83,12 @@ function generateFeaturedList(){
                 </div>
         `;
     });
+
+    progressSlideShow(2000);
+
+    // setInterval(() => {
+    //     progressSlideShow(1000);
+    // }, 61000);
 }
 
 function generateDiscoverNew(){
@@ -98,4 +119,43 @@ function generateTopNewReleases(){
     let topNewItemsHTML = document.querySelector('.js-top-new-items');
 
     topNewItemsHTML.innerHTML += renderSlideGames(newReleases);
+}
+
+async function progressSlideShow(timeInterval) {
+    const items = document.querySelectorAll('.game-item');
+    items[0].classList.add('game-item-select');
+
+    items.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            if (selectedGameItemIndex !== index){
+                item.classList.add('game-item-select');
+                items[selectedGameItemIndex].classList.remove('game-item-select');
+                selectedGameItemIndex = index;
+                generateFeaturedGame(item.dataset.gameId);
+            }
+        });
+    });
+
+    // for (let i = 0; i < items.length; i++){
+    //     items[i].classList.add('start-progress');
+    //     await new Promise(resolve => setTimeout(resolve, 10000));
+    //     items[i].classList.remove('start-progress');
+    // }
+
+    while (true) {
+        for (let i = 0; i < items.length; i++){
+            items[i].classList.add('game-item-select');
+            items[i].click();
+            await new Promise(resolve => setTimeout(resolve, timeInterval));
+            items[i].classList.remove('game-item-select');
+        }   
+    }
+}
+
+function addEventListenerToGameItems(gameItems){
+    gameItems.forEach(item => {
+        item.addEventListener('click', () => {
+            
+        });
+    })
 }

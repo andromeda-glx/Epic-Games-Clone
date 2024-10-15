@@ -1,4 +1,5 @@
 const thumbnailFileLocation = './images/games-thumbnail';
+const featuredFileLocation = './images/games-featured';
 
 class Game{
     id;
@@ -8,6 +9,7 @@ class Game{
     #priceCents;
     #newPriceCents;
     discountRate;
+    featuredImage;
 
     constructor(gameDetails){
         this.id = gameDetails.id;
@@ -20,6 +22,8 @@ class Game{
         if (this.discountRate){
             this.#newPriceCents = this.#priceCents - (Math.ceil(this.#priceCents * this.discountRate));
         }
+
+        this.featuredImage = gameDetails.featuredImage;
     }
 
     generatePriceHTML(){
@@ -64,7 +68,8 @@ export const games =
         name: 'Black Myth: Wukong',
         type: 'Base Game',
         priceCents: 5999,
-        discountRate: 0
+        discountRate: 0,
+        featuredImage: `${featuredFileLocation}/black-myth-wukong-featured.avif`
     },
     {
         id: 'game-crosshair-x',
@@ -88,7 +93,8 @@ export const games =
         name: 'Fall Guys',
         type: 'Base Game',
         priceCents: 0,
-        discountRate: 0.9
+        discountRate: 0.9,
+        featuredImage: `${featuredFileLocation}/fall-guys-featured.jpg`
     },
     {
         id: 'game-fortnite',
@@ -96,7 +102,8 @@ export const games =
         name: 'Fortnite',
         type: 'Base Game',
         priceCents: 0,
-        discountRate: 0.9
+        discountRate: 0.9,
+        featuredImage: `${featuredFileLocation}/fortnite-featured.avif`
     },
     {
         id: 'game-god-of-war',
@@ -139,6 +146,15 @@ export const games =
         discountRate: 0
     },
     {
+        id: 'game-red-dead-redemption',
+        image: `${thumbnailFileLocation}/red-dead-redemption.webp`,
+        name: `Red Dead Redemption`,
+        type: 'Base Game',
+        priceCents: 4999,
+        discountRate: 0,
+        featuredImage: `${featuredFileLocation}/red-dead-redemption-featured.webp`
+    },
+    {
         id: 'game-the-crew-2',
         image: `${thumbnailFileLocation}/the-crew-2.avif`,
         name: 'The Crew 2 Standard Edition',
@@ -173,3 +189,11 @@ export const games =
 ].map(item => {
     return new Game(item);
 });
+
+export function findGameById(gameId){
+    for (let game of games){
+        if (game.id === gameId){
+            return game;
+        }
+    }
+}
