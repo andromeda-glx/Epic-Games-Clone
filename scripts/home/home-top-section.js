@@ -62,7 +62,8 @@ function generateFeaturedGamesSlider() {
     var splide = new Splide('.splide', {
         // type: 'loop',
         padding: '3rem',
-        arrows: false
+        arrows: false,
+        gap: '15px'
     });
     splide.mount();
 }

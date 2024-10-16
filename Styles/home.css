@@ -101,7 +101,11 @@ main{
     width: 100%;
 }
 
-.slide-items img{
+.splide__track{
+    margin-bottom: 30px;
+}
+
+.slider-items img{
     width: 100%;
     border-radius: 10px;
 }
