@@ -32,19 +32,32 @@
 }
 
 .search-bar-c{
-    margin-right: 20px;
+    margin-right: 40px;
+    width: 215px;
 }
 .search-bar-c input{
     border: none;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 13px;
+    padding-bottom: 13px;
     padding-left: 12px;
     border-radius: 20px;
     background-color: #1d1d1d;
+    width: 100%;
+}
+
+.browse-c, .news-c{
+    margin-left: 40px;
+    display: none;
+}
+
+@media (min-width: 1280px) {
+    .browse-c, .news-c{
+        display: block;
+    }
 }
 
 .cart-c{
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
 /* main */
