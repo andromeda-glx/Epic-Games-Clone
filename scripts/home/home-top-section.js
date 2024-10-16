@@ -2,9 +2,10 @@ import { mobilePromotions } from "../../data/mobile-promotions/mobile-promotions
 import { games, findGameById } from "../../data/games-details.js";
 import { specialEvents } from "../../data/event-details.js";
 import { renderSlideGames } from "../utils/generate-game-slide.js";
+import Splide from "../../node_modules/@splidejs/splide/dist/js/splide.esm.js";
 
 
-const featured = ['game-red-dead-redemption', 'game-sonic-x-shadow-generations', 'game-fall-guys', 'game-zeniess-zone-zero', 'game-warhammer-40,000-space-marine-2', 'game-black-myth-wukong' ];
+const featured = ['game-red-dead-redemption', 'game-sonic-x-shadow-generations', 'game-fall-guys', 'game-zeniess-zone-zero', 'game-warhammer-40,000-space-marine-2', 'game-black-myth-wukong'];
 
 const discoverNew = ['game-black-myth-wukong', 'game-warhammer-40,000-space-marine-2', 'game-fc-25'];
 
@@ -14,8 +15,9 @@ const featuredDiscounts = ['game-the-crew-2', 'game-god-of-war', 'game-days-gone
 
 let selectedGameItemIndex = 0;
 
-export function renderTopSectionHTML(){
+export function renderTopSectionHTML() {
     generateMobilePromotions();
+    generateFeaturedGamesSlider();
     generateFeaturedGame(featured[0]);
     generateFeaturedList();
     generateDiscoverNew();
@@ -28,7 +30,7 @@ function generateMobilePromotions() {
 
     mobilePromotions.forEach(promoItem => {
         mobilePromotionsHTML.innerHTML +=
-        `
+            `
             <div class="mobile-promotion" data-mobile-promo-id="${promoItem.id}">
                 <img src="${promoItem.image}" alt="">
             </div>
@@ -36,41 +38,70 @@ function generateMobilePromotions() {
     });
 }
 
-function generateFeaturedGame(gameId){
-    const featuredGame = findGameById(gameId);
-    const featuredGameHTML = document.querySelector('.game-pic-c');
-
-    featuredGameHTML.innerHTML = 
-    `
-        <img src="${featuredGame.featuredImage}" alt="">
-    `;
-}
-
-function generateFeaturedList(){
-    const featuredGamesListHTML =  document.querySelector('.games-list');
+function generateFeaturedGamesSlider() {
+    let gameSliderHTML = document.querySelector('.js-splide__list');
 
     featured.forEach(gameId => {
         let itemDetails = null;
 
-        if (gameId[0] === 'g'){
-            for (let i = 0; i < games.length; i++){
-                if (games[i].id === gameId){
+        for (let i = 0; i < games.length; i++) {
+            if (gameId === games[i].id) {
+                itemDetails = games[i];
+                break;
+            }
+        }
+
+        gameSliderHTML.innerHTML +=
+            `
+            <div class="splide__slide">
+                <img src="${itemDetails.image}" alt="">
+            </div>
+        `;
+    });
+
+    var splide = new Splide('.splide', {
+        // type: 'loop',
+        padding: '3rem',
+        arrows: false
+    });
+    splide.mount();
+}
+
+function generateFeaturedGame(gameId) {
+    const featuredGame = findGameById(gameId);
+    const featuredGameHTML = document.querySelector('.game-pic-c');
+
+    featuredGameHTML.innerHTML =
+        `
+        <img src="${featuredGame.featuredImage}" alt="">
+    `;
+}
+
+function generateFeaturedList() {
+    const featuredGamesListHTML = document.querySelector('.games-list');
+
+    featured.forEach(gameId => {
+        let itemDetails = null;
+
+        if (gameId[0] === 'g') {
+            for (let i = 0; i < games.length; i++) {
+                if (games[i].id === gameId) {
                     itemDetails = games[i];
                     break;
                 }
             }
         }
-        else{
-            for (let i = 0; i < specialEvents.length; i++){
-                if (specialEvents[i].id === gameId){
+        else {
+            for (let i = 0; i < specialEvents.length; i++) {
+                if (specialEvents[i].id === gameId) {
                     itemDetails = specialEvents[i];
                     break;
                 }
             }
         }
 
-        featuredGamesListHTML.innerHTML += 
-        `
+        featuredGamesListHTML.innerHTML +=
+            `
                 <div class="game-item" data-game-id="${itemDetails.id}">
                     <span class="progress-bar">
                     </span>
@@ -91,7 +122,7 @@ function generateFeaturedList(){
     // }, 61000);
 }
 
-function generateDiscoverNew(){
+function generateDiscoverNew() {
     const discoverNewTitleHTML = document.querySelector('.js-discover-new-title');
     discoverNewTitleHTML.innerHTML = 'Discover Something New &gt;';
     const discoverNewItemsHTML = document.querySelector('.js-discover-new-items');
@@ -105,7 +136,7 @@ function generateFeaturedDiscounts() {
     discoverNewItemsHTML.innerHTML = renderSlideGames(featuredDiscounts);
 }
 
-function generateTopNewReleases(){
+function generateTopNewReleases() {
     const topNewTitleHTML = document.querySelector('.js-top-new-title');
     topNewTitleHTML.innerHTML = `Top New Releases &gt;`
     const topNewItemsHTML = document.querySelector('.js-top-new-items');
@@ -118,7 +149,7 @@ async function progressSlideShow(timeInterval) {
 
     items.forEach((item, index) => {
         item.addEventListener('click', () => {
-            if (selectedGameItemIndex !== index){
+            if (selectedGameItemIndex !== index) {
                 item.classList.add('game-item-select');
                 items[selectedGameItemIndex].classList.remove('game-item-select');
                 selectedGameItemIndex = index;
@@ -134,19 +165,19 @@ async function progressSlideShow(timeInterval) {
     // }
 
     while (true) {
-        for (let i = 0; i < items.length; i++){
+        for (let i = 0; i < items.length; i++) {
             items[i].classList.add('game-item-select');
             items[i].click();
             await new Promise(resolve => setTimeout(resolve, timeInterval));
             items[i].classList.remove('game-item-select');
-        }   
+        }
     }
 }
 
-function addEventListenerToGameItems(gameItems){
+function addEventListenerToGameItems(gameItems) {
     gameItems.forEach(item => {
         item.addEventListener('click', () => {
-            
+
         });
     })
 }

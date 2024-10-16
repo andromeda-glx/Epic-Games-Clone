@@ -97,15 +97,31 @@ main{
 
 /* featuring games */
 
-.featuring-games{
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    justify-content: space-around;
-    align-items: center;
-    column-gap: 15px;
-
+.featuring-games-slider{
     width: 100%;
+}
+
+.slide-items img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.featuring-games{
+    display: none;
+}
+@media (min-width: 767px) {
+    .featuring-games{
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+        justify-content: space-around;
+        align-items: center;
+        column-gap: 15px;
     
+        width: 100%;
+    }
+    .featuring-games-slider{
+        display: none;
+    }
 }
 
 .game-pic-c{

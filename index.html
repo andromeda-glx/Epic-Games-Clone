@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styles/general.css">
     <link rel="stylesheet" href="Styles/header.css">
     <link rel="stylesheet" href="./Styles/home.css">
+    <link rel="stylesheet" href="./node_modules/@splidejs/splide/dist/css/splide.min.css">
     <title>Home | Epic Games Store</title>
 </head>
+
 <body>
     <header>
         <div class="top-header">
@@ -87,6 +90,12 @@
         </div>
     </div>
     <main>
+        <div class="featuring-games-slider splide">
+            <div class="splide__track">
+                <ul class="splide__list js-splide__list slide-items">
+                </ul>
+            </div>
+        </div>
         <div class="featuring-games">
             <div class="game-pic-c">
             </div>
@@ -134,7 +143,17 @@
             </div>
         </div>
 
+        <!-- <script src="./node_modules/@splidejs/splide/dist/js/splide.min.js"></script> -->
         <script type="module" src="scripts/home/home.js"></script>
+        <script>
+            // var splide = new Splide('.splide', {
+            //     // type: 'loop',
+            //     padding: '70px',
+            //     arrows: false
+            // });
+            // splide.mount();
+        </script>
     </main>
 </body>
+
 </html>
