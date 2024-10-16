@@ -2,7 +2,7 @@ import { mobilePromotions } from "../../data/mobile-promotions/mobile-promotions
 import { games, findGameById } from "../../data/games-details.js";
 import { specialEvents } from "../../data/event-details.js";
 import { renderSlideGames } from "../utils/generate-game-slide.js";
-import Splide from "../../node_modules/@splidejs/splide/dist/js/splide.esm.js";
+import Splide from 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/+esm';
 
 
 const featured = ['game-red-dead-redemption', 'game-sonic-x-shadow-generations', 'game-fall-guys', 'game-zeniess-zone-zero', 'game-warhammer-40,000-space-marine-2', 'game-black-myth-wukong'];
