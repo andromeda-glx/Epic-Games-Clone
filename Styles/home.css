@@ -151,8 +151,9 @@ main{
     width: 100%;
     border-radius: 3px;
 }
-.item-name{
+.game-item .item-name{
     flex: 3;
+    font-weight: 400;
 }
 
 /* new releases */

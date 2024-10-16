@@ -4,7 +4,7 @@ import { specialEvents } from "../../data/event-details.js";
 import { renderSlideGames } from "../utils/generate-game-slide.js";
 
 
-const featured = ['game-red-dead-redemption', 'game-fortnite', 'game-fall-guys', 'game-zeniess-zone-zero', 'game-madden-nfl-25', 'game-black-myth-wukong' ];
+const featured = ['game-red-dead-redemption', 'game-sonic-x-shadow-generations', 'game-fall-guys', 'game-zeniess-zone-zero', 'game-warhammer-40,000-space-marine-2', 'game-black-myth-wukong' ];
 
 const discoverNew = ['game-black-myth-wukong', 'game-warhammer-40,000-space-marine-2', 'game-fc-25'];
 
