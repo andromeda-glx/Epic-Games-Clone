@@ -4,6 +4,7 @@ import { specialEvents } from "../../data/event-details.js";
 import { renderSlideGames } from "../utils/generate-game-slide.js";
 import Splide from 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/+esm';
 
+// These arrays contain the game IDs we want to show in their coresponding sliders
 
 const featured = ['game-red-dead-redemption', 'game-sonic-x-shadow-generations', 'game-fall-guys', 'game-zeniess-zone-zero', 'game-warhammer-40,000-space-marine-2', 'game-black-myth-wukong'];
 
@@ -53,18 +54,13 @@ function generateFeaturedGamesSlider() {
         `;
     });
 
-    var splide = new Splide('.splide', {
+    let splide = new Splide('#slider1', {
         // type: 'loop',
         padding: '3rem',
         arrows: false,
         gap: '15px'
     });
     splide.mount();
-
-    const btn = document.querySelector('.download-button');
-    btn.addEventListener('click', () => {
-        splide.go('+1');
-    });
 }
 
 function generateFeaturedGame(gameId) {
@@ -77,6 +73,8 @@ function generateFeaturedGame(gameId) {
     `;
 }
 
+// This method takes the HTML's slider id and populates it with given items
+
 function generateGamesSliders(id, title, games){
     const gamesSliderHTML = document.querySelector(`#${id}`);
 
@@ -84,12 +82,40 @@ function generateGamesSliders(id, title, games){
     `
         <div class="game-slide-header">
             <div class="game-slide-title">${title}></div>
-            <div class="browsing-btns"></div>
+            <div class="browsing-btns">
+                <button class="js-prev-slide"><</button>
+                <button class="js-next-slide">></button>
+            </div>
         </div>
-        <div class="slide-items">
-            ${renderSlideGames(games)}
+        <div id="slider-${id}" class="splide">
+            <div class="splide__track slide-items">
+                <ul class="splide__list">
+                    ${renderSlideGames(games)}
+                </ul>
+            </div>
         </div>
     `;
+
+
+    let splide = new Splide(`#slider-${id}`, {
+        padding: '1rem',
+        arrows: false,
+        gap: '10px',
+        perPage: 1,
+        lazyLoad: true
+    });
+    splide.mount();
+
+    // const btn = document.querySelector('.download-button');
+    // btn.addEventListener('click', () => {
+    //     splide.go('+5');
+    // });
+
+    window.addEventListener('resize', () => {
+        splide.options = {
+            perPage: getPerPageValue()
+        }
+    });
 }
 
 function generateFeaturedList() {
@@ -148,5 +174,19 @@ async function progressSlideShow(timeInterval) {
             await new Promise(resolve => setTimeout(resolve, timeInterval));
             items[i].classList.remove('game-item-select');
         }
+    }
+}
+
+function getPerPageValue(){
+    // 768 = 4
+    const width = window.innerWidth;
+    if(width >= 768 && width < 1024){
+        return 4;
+    }
+    else if (width >= 1024 && width < 1600){
+        return 5;
+    }
+    else if (width >= 1600){
+        return 6;
     }
 }

@@ -21,7 +21,7 @@ export function renderSlideGames(selectedItemsIds) {
 
 function generateHTML(gameDetails) {
     return `
-                <div class="slide-item">
+                <div class="slide-item splide__slide">
                     <div class="slide-item-pic">
                         <img src="${gameDetails.image}" alt="">
                     </div>

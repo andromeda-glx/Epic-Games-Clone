@@ -221,11 +221,11 @@ main{
 .slide-items{
     width: 100%;
 
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(5, 1fr);
     align-items: top;
     justify-content: space-between;
-    column-gap: 18px;
+    column-gap: 18px; */
 }
 
 @media (max-width: 1024px){
@@ -234,7 +234,7 @@ main{
     }
     /* needs slide bar */
     .slide-items{
-        grid-template-columns: repeat(4, 1fr);
+        /* grid-template-columns: repeat(4, 1fr); */
     }
 }
 
