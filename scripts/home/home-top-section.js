@@ -8,7 +8,7 @@ import Splide from 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/+esm';
 
 const featured = ['game-red-dead-redemption', 'game-sonic-x-shadow-generations', 'game-fall-guys', 'game-zeniess-zone-zero', 'game-warhammer-40,000-space-marine-2', 'game-black-myth-wukong'];
 
-const discoverNew = ['game-black-myth-wukong', 'game-warhammer-40,000-space-marine-2', 'game-fc-25'];
+const discoverNew = ['game-off-the-grid', 'game-fc-25', 'game-priest-simulator-vampire-show', 'game-rogue-waters', 'game-wrc-24', 'game-the-forever-winter', 'game-breachway', 'game-until-dawn', 'game-final-fantasy-xvi', 'game-frostpunk-2', 'game-god-of-war-ragnarok', 'game-iron-meat', 'game-train-sim-world-5', 'game-dynasty-legends-2', 'game-drive-rally', 'game-potion-tycoon', 'game-63-days', 'game-chains-of-fury', "game-sid-meier's-civilization-vii", 'game-kingdom-come-deliverance-ii', 'game-s.t.a.l.k.e.r.-2-heart-of-chornobyl', 'game-red-dead-redemption', 'game-lego-horizon-adventures'];
 
 const newReleases = ['game-need-for-speed-heat', 'game-battlefield-1', 'game-crosshair-x', 'game-madden-nfl-25', 'game-manor-lords'];
 
@@ -22,9 +22,9 @@ export function renderTopSectionHTML() {
     generateFeaturedGame(featured[0]);
     generateFeaturedList();
 
-    generateGamesSliders('discover-new', 'Discover New', discoverNew);
+    generateGamesSliders('discover-new', 'Discover Something New', discoverNew);
     generateGamesSliders('featured-discounts', 'Featured Discounts', featuredDiscounts);
-    generateGamesSliders('top-new', 'Top New', newReleases);
+    generateGamesSliders('top-new', 'Top New Releases', newReleases);
 }
 
 function generateMobilePromotions() {
@@ -101,7 +101,7 @@ function generateGamesSliders(id, title, games){
         padding: '1rem',
         arrows: false,
         gap: '10px',
-        perPage: 1,
+        perPage: 2,
         lazyLoad: true
     });
     splide.mount();
@@ -110,6 +110,12 @@ function generateGamesSliders(id, title, games){
     // btn.addEventListener('click', () => {
     //     splide.go('+5');
     // });
+
+    window.addEventListener('load', () => {
+        splide.options = {
+            perPage: getPerPageValue()
+        }
+    })
 
     window.addEventListener('resize', () => {
         splide.options = {
@@ -180,13 +186,16 @@ async function progressSlideShow(timeInterval) {
 function getPerPageValue(){
     // 768 = 4
     const width = window.innerWidth;
-    if(width >= 768 && width < 1024){
+    if(width < 768){
+        return 2;
+    }
+    else if(width >= 768 && width < 1024){
         return 4;
     }
     else if (width >= 1024 && width < 1600){
         return 5;
     }
-    else if (width >= 1600){
+    else{
         return 6;
     }
 }
