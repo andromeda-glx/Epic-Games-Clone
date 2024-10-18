@@ -2,6 +2,10 @@
     margin: 0;
 }
 
+button:hover{
+    cursor: pointer;
+}
+
 body{
     background-color: #101014;
     color: white;

@@ -1,5 +1,5 @@
 import { mobilePromotions } from "../../data/mobile-promotions/mobile-promotions.js";
-import { games, findGameById } from "../../data/games-details.js";
+import { findGameById } from "../../data/games-details.js";
 import { specialEvents } from "../../data/event-details.js";
 import { renderSlideGames } from "../utils/generate-game-slide.js";
 import Splide from 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/+esm';
@@ -20,9 +20,10 @@ export function renderTopSectionHTML() {
     generateFeaturedGamesSlider();
     generateFeaturedGame(featured[0]);
     generateFeaturedList();
-    generateDiscoverNew();
-    generateFeaturedDiscounts();
-    generateTopNewReleases();
+
+    generateGamesSliders('discover-new', 'Discover New', discoverNew);
+    generateGamesSliders('featured-discounts', 'Featured Discounts', featuredDiscounts);
+    generateGamesSliders('top-new', 'Top New', newReleases);
 }
 
 function generateMobilePromotions() {
@@ -42,14 +43,7 @@ function generateFeaturedGamesSlider() {
     let gameSliderHTML = document.querySelector('.js-splide__list');
 
     featured.forEach(gameId => {
-        let itemDetails = null;
-
-        for (let i = 0; i < games.length; i++) {
-            if (gameId === games[i].id) {
-                itemDetails = games[i];
-                break;
-            }
-        }
+        const itemDetails = findGameById(gameId);
 
         gameSliderHTML.innerHTML +=
             `
@@ -66,6 +60,11 @@ function generateFeaturedGamesSlider() {
         gap: '15px'
     });
     splide.mount();
+
+    const btn = document.querySelector('.download-button');
+    btn.addEventListener('click', () => {
+        splide.go('+1');
+    });
 }
 
 function generateFeaturedGame(gameId) {
@@ -73,8 +72,23 @@ function generateFeaturedGame(gameId) {
     const featuredGameHTML = document.querySelector('.game-pic-c');
 
     featuredGameHTML.innerHTML =
-        `
+    `
         <img src="${featuredGame.featuredImage}" alt="">
+    `;
+}
+
+function generateGamesSliders(id, title, games){
+    const gamesSliderHTML = document.querySelector(`#${id}`);
+
+    gamesSliderHTML.innerHTML = 
+    `
+        <div class="game-slide-header">
+            <div class="game-slide-title">${title}></div>
+            <div class="browsing-btns"></div>
+        </div>
+        <div class="slide-items">
+            ${renderSlideGames(games)}
+        </div>
     `;
 }
 
@@ -82,24 +96,7 @@ function generateFeaturedList() {
     const featuredGamesListHTML = document.querySelector('.games-list');
 
     featured.forEach(gameId => {
-        let itemDetails = null;
-
-        if (gameId[0] === 'g') {
-            for (let i = 0; i < games.length; i++) {
-                if (games[i].id === gameId) {
-                    itemDetails = games[i];
-                    break;
-                }
-            }
-        }
-        else {
-            for (let i = 0; i < specialEvents.length; i++) {
-                if (specialEvents[i].id === gameId) {
-                    itemDetails = specialEvents[i];
-                    break;
-                }
-            }
-        }
+        let itemDetails = findGameById(gameId);
 
         featuredGamesListHTML.innerHTML +=
             `
@@ -121,27 +118,6 @@ function generateFeaturedList() {
     // setInterval(() => {
     //     progressSlideShow(1000);
     // }, 61000);
-}
-
-function generateDiscoverNew() {
-    const discoverNewTitleHTML = document.querySelector('.js-discover-new-title');
-    discoverNewTitleHTML.innerHTML = 'Discover Something New &gt;';
-    const discoverNewItemsHTML = document.querySelector('.js-discover-new-items');
-    discoverNewItemsHTML.innerHTML = renderSlideGames(discoverNew);
-}
-
-function generateFeaturedDiscounts() {
-    const featuredDiscountsTitleHTML = document.querySelector('.js-featured-discounts-title');
-    featuredDiscountsTitleHTML.innerHTML = 'Featured Discounts &gt';
-    const discoverNewItemsHTML = document.querySelector('.js-featured-discounts-items');
-    discoverNewItemsHTML.innerHTML = renderSlideGames(featuredDiscounts);
-}
-
-function generateTopNewReleases() {
-    const topNewTitleHTML = document.querySelector('.js-top-new-title');
-    topNewTitleHTML.innerHTML = `Top New Releases &gt;`
-    const topNewItemsHTML = document.querySelector('.js-top-new-items');
-    topNewItemsHTML.innerHTML += renderSlideGames(newReleases);
 }
 
 async function progressSlideShow(timeInterval) {
@@ -173,12 +149,4 @@ async function progressSlideShow(timeInterval) {
             items[i].classList.remove('game-item-select');
         }
     }
-}
-
-function addEventListenerToGameItems(gameItems) {
-    gameItems.forEach(item => {
-        item.addEventListener('click', () => {
-
-        });
-    })
 }
