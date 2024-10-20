@@ -4,6 +4,8 @@ import { specialEvents } from "../../data/event-details.js";
 import { renderSlideGames } from "../utils/generate-game-slide.js";
 import Splide from 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/+esm';
 
+let isSignedin = true;
+
 // These arrays contain the game IDs we want to show in their coresponding sliders
 
 const featured = ['game-red-dead-redemption', 'game-sonic-x-shadow-generations', 'game-fall-guys', 'game-zeniess-zone-zero', 'game-warhammer-40,000-space-marine-2', 'game-black-myth-wukong'];
@@ -25,6 +27,10 @@ export function renderTopSectionHTML() {
     generateGamesSliders('discover-new', 'Discover Something New', discoverNew);
     generateGamesSliders('featured-discounts', 'Featured Discounts', featuredDiscounts);
     generateGamesSliders('top-new', 'Top New Releases', newReleases);
+}
+
+function checkForSignIn(){
+    
 }
 
 function generateMobilePromotions() {
