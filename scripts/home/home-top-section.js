@@ -83,8 +83,8 @@ function generateGamesSliders(id, title, games){
         <div class="game-slide-header">
             <div class="game-slide-title">${title}></div>
             <div class="browsing-btns">
-                <button class="js-prev-slide"><</button>
-                <button class="js-next-slide">></button>
+                <button id="prev-slide-${id}" class="js-prev-slide"><</button>
+                <button id="next-slide-${id}" class="js-next-slide">></button>
             </div>
         </div>
         <div id="slider-${id}" class="splide">
@@ -100,28 +100,42 @@ function generateGamesSliders(id, title, games){
     let splide = new Splide(`#slider-${id}`, {
         padding: '1rem',
         arrows: false,
-        gap: '10px',
+        gap: '17px',
         perPage: 2,
-        lazyLoad: true
+        mediaQuery: 'min',
+        breakpoints:{
+            768: {
+                perPage: 4,
+                drag: false
+            },
+            1024: {
+                perPage: 5,
+                drag: false
+            },
+            1600: {
+                perPage: 6,
+                drag: false
+            }
+        },
+        lazyLoad: true,
+        drag: true,
+        pagination: false
     });
     splide.mount();
 
-    // const btn = document.querySelector('.download-button');
-    // btn.addEventListener('click', () => {
-    //     splide.go('+5');
-    // });
-
-    window.addEventListener('load', () => {
-        splide.options = {
-            perPage: getPerPageValue()
-        }
-    })
-
-    window.addEventListener('resize', () => {
-        splide.options = {
-            perPage: getPerPageValue()
-        }
+    document.querySelector(`#prev-slide-${id}`).addEventListener('click', () => {
+        splide.go('<');
     });
+
+    document.querySelector(`#next-slide-${id}`).addEventListener('click', () => {
+        splide.go('>');
+    });
+
+    // window.addEventListener('load', () => {
+    //     splide.options = {
+    //         perPage: getPerPageValue()
+    //     }
+    // })
 }
 
 function generateFeaturedList() {
@@ -180,22 +194,5 @@ async function progressSlideShow(timeInterval) {
             await new Promise(resolve => setTimeout(resolve, timeInterval));
             items[i].classList.remove('game-item-select');
         }
-    }
-}
-
-function getPerPageValue(){
-    // 768 = 4
-    const width = window.innerWidth;
-    if(width < 768){
-        return 2;
-    }
-    else if(width >= 768 && width < 1024){
-        return 4;
-    }
-    else if (width >= 1024 && width < 1600){
-        return 5;
-    }
-    else{
-        return 6;
     }
 }
