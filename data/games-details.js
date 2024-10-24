@@ -386,9 +386,9 @@ export const games =
     });
 
 export function findGameById(gameId) {
-    for (let game of games) {
-        if (game.id === gameId) {
-            return game;
+    for (let i = 0; i < games.length; i++) {
+        if (games[i].id === gameId) {
+            return games[i];
         }
     }
 }

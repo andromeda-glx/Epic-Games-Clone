@@ -20,17 +20,17 @@ let selectedGameItemIndex = 0;
 
 export function renderTopSectionHTML() {
     generateMobilePromotions();
-    generateFeaturedGamesSlider();
-    generateFeaturedGame(featured[0]);
     generateFeaturedList();
+    generateFeaturedGamesSlider();
+    generateFeaturedGame();
 
     generateGamesSliders('discover-new', 'Discover Something New', discoverNew);
     generateGamesSliders('featured-discounts', 'Featured Discounts', featuredDiscounts);
     generateGamesSliders('top-new', 'Top New Releases', newReleases);
 }
 
-function checkForSignIn(){
-    
+function checkForSignIn() {
+
 }
 
 function generateMobilePromotions() {
@@ -38,7 +38,7 @@ function generateMobilePromotions() {
 
     mobilePromotions.forEach(promoItem => {
         mobilePromotionsHTML.innerHTML +=
-            `
+        `
             <div class="mobile-promotion" data-mobile-promo-id="${promoItem.id}">
                 <img src="${promoItem.image}" alt="">
             </div>
@@ -53,7 +53,7 @@ function generateFeaturedGamesSlider() {
         const itemDetails = findGameById(gameId);
 
         gameSliderHTML.innerHTML +=
-            `
+        `
             <div class="splide__slide">
                 <img src="${itemDetails.image}" alt="">
             </div>
@@ -69,23 +69,50 @@ function generateFeaturedGamesSlider() {
     splide.mount();
 }
 
-function generateFeaturedGame(gameId) {
-    const featuredGame = findGameById(gameId);
-    const featuredGameHTML = document.querySelector('.game-pic-c');
+async function generateFeaturedGame() {
+    const featuredGameHTML = document.querySelector('.js-splide__featured__list');
 
-    featuredGameHTML.innerHTML =
-    `
-        <img src="${featuredGame.featuredImage}" alt="">
-    `;
+    featured.forEach(gameId => {
+        const featuredGame = findGameById(gameId);
+
+        featuredGameHTML.innerHTML +=
+        `
+            <div class="splide__slide">
+                <img src="${featuredGame.featuredImage}" alt="">
+            </div>
+        `;
+    });
+
+    let splide = new Splide('#slider2', {
+        type: 'loop',
+        arrows: false,
+        drag: false,
+        pagination: false,
+        gap: '5px'
+    });
+    splide.mount();
+
+    const items = document.querySelectorAll('.game-item');
+    items[0].classList.add('game-item-select');
+
+    while (true) {
+        for (let i = 0; i < items.length; i++) {
+            splide.go(i);
+            items[i].classList.add('game-item-select');
+            items[i].click();
+            await new Promise(resolve => setTimeout(resolve, 5000));
+            items[i].classList.remove('game-item-select');
+        }
+    }
 }
 
 // This method takes the HTML's slider id and populates it with given items
 
-function generateGamesSliders(id, title, games){
+function generateGamesSliders(id, title, games) {
     const gamesSliderHTML = document.querySelector(`#${id}`);
 
-    gamesSliderHTML.innerHTML = 
-    `
+    gamesSliderHTML.innerHTML =
+        `
         <div class="game-slide-header">
             <div class="game-slide-title">${title}></div>
             <div class="browsing-btns">
@@ -109,7 +136,7 @@ function generateGamesSliders(id, title, games){
         gap: '17px',
         perPage: 2,
         mediaQuery: 'min',
-        breakpoints:{
+        breakpoints: {
             768: {
                 perPage: 4,
                 drag: false
@@ -176,29 +203,20 @@ async function progressSlideShow(timeInterval) {
     const items = document.querySelectorAll('.game-item');
     items[0].classList.add('game-item-select');
 
-    items.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            if (selectedGameItemIndex !== index) {
-                item.classList.add('game-item-select');
-                items[selectedGameItemIndex].classList.remove('game-item-select');
-                selectedGameItemIndex = index;
-                generateFeaturedGame(item.dataset.gameId);
-            }
-        });
-    });
+    // items.forEach((item, index) => {
+    //     item.addEventListener('click', () => {
+    //         if (selectedGameItemIndex !== index) {
+    //             item.classList.add('game-item-select');
+    //             items[selectedGameItemIndex].classList.remove('game-item-select');
+    //             selectedGameItemIndex = index;
+    //             generateFeaturedGame(item.dataset.gameId);
+    //         }
+    //     });
+    // });
 
     // for (let i = 0; i < items.length; i++){
     //     items[i].classList.add('start-progress');
     //     await new Promise(resolve => setTimeout(resolve, 10000));
     //     items[i].classList.remove('start-progress');
     // }
-
-    while (true) {
-        for (let i = 0; i < items.length; i++) {
-            items[i].classList.add('game-item-select');
-            items[i].click();
-            await new Promise(resolve => setTimeout(resolve, timeInterval));
-            items[i].classList.remove('game-item-select');
-        }
-    }
 }
