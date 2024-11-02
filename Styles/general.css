@@ -19,3 +19,12 @@ body{
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
+a, a:visited, a:active{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    cursor: pointer;
+}

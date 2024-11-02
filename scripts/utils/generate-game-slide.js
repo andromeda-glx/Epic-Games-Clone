@@ -21,7 +21,8 @@ export function renderSlideGames(selectedItemsIds) {
 
 function generateHTML(gameDetails) {
     return `
-                <div class="slide-item splide__slide">
+            <div class="slide-item splide__slide">
+                <a href="./game-page/?productId=${gameDetails.id}">
                     <div class="slide-item-pic">
                         <img src="${gameDetails.image}" alt="">
                     </div>
@@ -32,6 +33,7 @@ function generateHTML(gameDetails) {
                     <div class="slide-item-price-c">
                         ${gameDetails.generatePriceHTML()}
                     </div>
-                </div>
-            `;
+                </a>
+            </div>
+        `;
 }

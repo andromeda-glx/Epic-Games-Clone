@@ -3,6 +3,7 @@ import { findGameById } from "../../data/games-details.js";
 import { specialEvents } from "../../data/event-details.js";
 import { renderSlideGames } from "../utils/generate-game-slide.js";
 import Splide from 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/+esm';
+import { generateHeader, generateBottomHeader } from "../utils/generate-header.js";
 
 let isSignedin = true;
 
@@ -19,6 +20,9 @@ const featuredDiscounts = ['game-the-crew-2', 'game-god-of-war', 'game-days-gone
 let selectedGameItemIndex = 0;
 
 export function renderTopSectionHTML() {
+    generateHeader();
+    generateBottomHeader();
+
     generateMobilePromotions();
     generateFeaturedList();
     generateFeaturedGamesSlider();
@@ -131,7 +135,6 @@ function generateGamesSliders(id, title, games) {
 
 
     let splide = new Splide(`#slider-${id}`, {
-        padding: '1rem',
         arrows: false,
         gap: '17px',
         perPage: 2,
