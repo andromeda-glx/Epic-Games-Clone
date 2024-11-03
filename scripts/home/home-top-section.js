@@ -82,7 +82,9 @@ async function generateFeaturedGame() {
         featuredGameHTML.innerHTML +=
         `
             <div class="splide__slide">
-                <img src="${featuredGame.featuredImage}" alt="">
+                <a href="./game-page/?productId=${gameId}">
+                    <img src="${featuredGame.featuredImage}" alt="">
+                </a>
             </div>
         `;
     });

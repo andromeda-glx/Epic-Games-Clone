@@ -1,4 +1,4 @@
-.top-header{
+.top-header {
     background-color: #1c1c1f;
     padding: 20px 25px;
     width: 100%;
@@ -11,13 +11,13 @@
     z-index: 20;
 }
 
-.left-section{
+.left-section {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.left-section-items{
+.left-section-items {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -27,40 +27,43 @@
     padding: 0;
 }
 
-.epic-games-logo-c{
+.epic-games-logo-c {
     width: 30px;
 }
-.epic-games-logo-c img{
+
+.epic-games-logo-c img {
     width: 100%;
 }
 
-.store-c{
+.store-c {
     width: 56px;
 }
-.store-c img{
+
+.store-c img {
     width: 100%;
 }
 
 
-.right-section{
+.right-section {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
-.right-section>div{
+
+.right-section>div {
     margin-left: 20px;
 }
 
-.right-section-mini{
+.right-section-mini {
     display: none;
 }
 
-.hamburger-btn{
+.hamburger-btn {
     width: 20px;
 }
 
-.sign-in-btn-c a{
+.sign-in-btn-c a {
     border: none;
     color: white;
     background-color: rgb(68, 68, 68);
@@ -70,27 +73,30 @@
     text-decoration: none;
     transition: background-color 0.2s;
 }
-.sign-in-btn-c a:hover{
+
+.sign-in-btn-c a:hover {
     cursor: pointer;
     background-color: rgb(121, 121, 121);
 }
 
-.language-logo-c img{
+.language-logo-c img {
     width: 20px;
     display: block;
 }
 
-.profile-box-c{
+.profile-box-c {
     flex: 1;
     display: flex;
     align-items: center;
 }
-.profile-pic-c{
+
+.profile-pic-c {
     width: 30px;
     height: 30px;
     margin-right: 10px;
 }
-.profile-pic-c img{
+
+.profile-pic-c img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -98,7 +104,7 @@
     border-radius: 50%;
 }
 
-.download-button-c button{
+.download-button-c button {
     font-size: 15px;
     padding: 8px 15px;
     border-radius: 6px;
@@ -107,108 +113,151 @@
     cursor: pointer;
     transition: background-color 0.2s;
 }
-.download-button-c button:hover{
+
+.download-button-c button:hover {
     background-color: #52c8ff;
 }
 
-@media (max-width: 1024px){
-    .support-link{
+@media (max-width: 1024px) {
+    .support-link {
         display: none;
     }
-    .distribute-link{
+
+    .distribute-link {
         display: none;
     }
-    .right-section{
+
+    .right-section {
         display: none;
     }
-    .right-section-mini{
+
+    .right-section-mini {
         display: flex;
         flex-direction: row;
         align-items: center;
         column-gap: 10px;
     }
-    .right-section-mini img{
+
+    .right-section-mini img {
         display: block;
     }
-    .right-section-mini button{
+
+    .right-section-mini button {
         padding: 6px 8px;
         font-weight: bold;
     }
 }
 
-/* Bottom Header */
-
 /* bottom header */
 
-.bottom-header{
+.bottom-header {
     background-color: #101014;
     /* background-color: lightblue; */
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding: 30px 50px;
     width: 100%;
 
     position: sticky;
     left: 0;
     right: 0;
     top: 0;
-    
+
     z-index: 10;
-}
 
-.bottom-header-content{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
-
-    max-width: 75%;
-    margin-right: auto;
-    margin-left: auto;
 }
 
-.bottom-right-section, .bottom-left-section{
+.wishlist-cart-c {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    justify-content: center;
 }
 
-.bottom-right-section{
+.wishlist-c,
+.cart-c {
     display: none;
 }
 
-@media (min-width: 1024px) {
-    .bottom-right-section{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+.wishlist-logo-c,
+.cart-logo-c {
+    display: block;
+    width: 25px;
+
+    img {
+        width: 100%;
     }
 }
 
-.search-bar-c{
-    margin-right: 40px;
-    width: 215px;
-}
-.search-bar-c input{
-    border: none;
-    padding-top: 13px;
-    padding-bottom: 13px;
-    padding-left: 12px;
-    border-radius: 20px;
-    background-color: #1d1d1d;
-    width: 100%;
+.wishlist-logo-c{
+    margin-right: 10px;
 }
 
-.browse-c, .news-c{
+.search-bar-c {
+    margin-right: 0;
+    width: 25px;
+}
+
+.search-bar-c input {
+    display: none;
+}
+
+.browse-c,
+.news-c {
     margin-left: 40px;
     display: none;
 }
 
-@media (min-width: 1280px) {
-    .browse-c, .news-c{
+.cart-c {
+    margin-left: 40px;
+}
+
+@media screen and (min-width: 1024px) {
+    .bottom-header {
+        width: 75%;
+        margin: 0 auto;
+        padding: 30px 0;
+
+        justify-content: start;
+    }
+
+    .wishlist-c,
+    .cart-c {
         display: block;
     }
-}
 
-.cart-c{
-    margin-left: 40px;
+    .wishlist-logo-c,
+    .cart-logo-c {
+        display: none;
+    }
+
+    .search-bar-c {
+        margin-right: 30px;
+        width: 30%;
+    }
+
+    .search-bar-c input {
+        display: block;
+        border: none;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        padding-left: 12px;
+        border-radius: 20px;
+        background-color: #1d1d1d;
+        width: 100%;
+    }
+
+    .discover-browse-news-c{
+        width: 50%;
+    }
+
+    .search-logo-c{
+        display: none;
+    }
+    
+    .browse-c,
+    .news-c {
+        display: none;
+    }
+    
 }

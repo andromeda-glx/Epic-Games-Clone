@@ -59,29 +59,36 @@ export function generateBottomHeader() {
 
     bottomHeaderElement.innerHTML = 
     `
-        <div class="bottom-header-content">
-            <div class="bottom-left-section">
                 <div class="search-bar-c">
                     <input type="text" placeholder="Search store">
+                    <div class="search-logo-c">
+                        <img src="./icons/search-logo.svg">
+                    </div>
                 </div>
-                <div class="discover-c">
-                    Discover
+                <div class="discover-browse-news-c">
+                    <div class="discover-c">
+                        Discover
+                    </div>
+                    <div class="browse-c">
+                        Browse
+                    </div>
+                    <div class="news-c">
+                        News
+                    </div>
                 </div>
-                <div class="browse-c">
-                    Browse
+                <div class="wishlist-cart-c">
+                    <div class="wishlist-c">
+                        Wishlist
+                    </div>
+                    <div class="cart-c">
+                        Cart
+                    </div>
+                    <div class="wishlist-logo-c">
+                        <img src="./icons/wishlist-icon.svg">
+                    </div>
+                    <div class="cart-logo-c">
+                        <img src="./icons/shopping-cart-logo.svg">
+                    </div>
                 </div>
-                <div class="news-c">
-                    News
-                </div>
-            </div>
-            <div class="bottom-right-section">
-                <div class="wishlist-c">
-                    Wishlist
-                </div>
-                <div class="cart-c">
-                    Cart
-                </div>
-            </div>
-        </div>
     `;
 }
