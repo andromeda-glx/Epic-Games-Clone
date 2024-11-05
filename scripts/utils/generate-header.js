@@ -12,7 +12,9 @@ export function generateHeader() {
                     </li>
                     <li>
                         <div class="store-c">
-                            <img src="../icons/Store.svg" alt="">
+                            <a href="../">
+                                <img src="../icons/Store.svg" alt="">
+                            </a>
                         </div>
                     </li>
                     <li>

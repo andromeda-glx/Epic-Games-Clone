@@ -8,7 +8,13 @@ const game = findGameById(gameId);
 
 generateHeader();
 generateBottomHeader();
-document.querySelector('main').innerHTML = 
-`
-    <img src="../${game.image}">
-`;
+generateGameHeader();
+
+function generateGameHeader() {
+    const gameHeaderElement = document.querySelector('.game-header-c');
+
+    gameHeaderElement.innerHTML = 
+    `
+        <div class="game-title">${game.name}</div>
+    `;
+}
