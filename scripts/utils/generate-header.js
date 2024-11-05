@@ -7,13 +7,13 @@ export function generateHeader() {
                 <ul class="left-section-items">
                     <li>
                         <div class="epic-games-logo-c">
-                            <img src="../icons/epic games logo.png" alt="">
+                            <img src="./icons/epic games logo.png" alt="">
                         </div>
                     </li>
                     <li>
                         <div class="store-c">
-                            <a href="../">
-                                <img src="../icons/Store.svg" alt="">
+                            <a href="./">
+                                <img src="./icons/Store.svg" alt="">
                             </a>
                         </div>
                     </li>
@@ -27,14 +27,14 @@ export function generateHeader() {
             </nav>
             <div class="right-section">
                 <div class="language-logo-c">
-                    <img src="../icons/language-logo.svg" alt="">
+                    <img src="./icons/language-logo.svg" alt="">
                 </div>
                 <div class="sign-in-btn-c">
                     <a href="./validation/">Sign in</a>
                 </div>
                 <div class="profile-box-c hide">
                     <div class="profile-pic-c">
-                        <img src="../images/user-profile-images/defaul-profile-pic.webp" alt="">
+                        <img src="./images/user-profile-images/defaul-profile-pic.webp" alt="">
                     </div>
                     <div class="profile-name-c">
                         Radix799
@@ -49,7 +49,7 @@ export function generateHeader() {
                     <button class="download-button">Download</button>
                 </div>
                 <div class="hamburger-btn">
-                    <img src="../icons/Hamburger_icon.svg" alt="">
+                    <img src="./icons/Hamburger_icon.svg" alt="">
                 </div>
             </div>
         </div>
