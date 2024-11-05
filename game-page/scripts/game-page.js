@@ -18,3 +18,5 @@ function generateGameHeader() {
         <div class="game-title">${game.name}</div>
     `;
 }
+
+document.title = `${game.name} | Epic Games Store Clone`;
