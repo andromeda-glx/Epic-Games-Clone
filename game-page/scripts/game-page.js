@@ -20,3 +20,6 @@ function generateGameHeader() {
 }
 
 document.title = `${game.name} | Epic Games Store Clone`;
+
+document.querySelector('meta[property="og:title"]').setAttribute('content', `${game.name} | Epic Games Store Clone`);
+document.querySelector('meta[property="og:url"]').setAttribute('content', `${url}`);
