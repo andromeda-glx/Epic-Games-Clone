@@ -42,7 +42,7 @@ function generateMobilePromotions() {
 
     mobilePromotions.forEach(promoItem => {
         mobilePromotionsHTML.innerHTML +=
-        `
+            `
             <div class="mobile-promotion" data-mobile-promo-id="${promoItem.id}">
                 <img src="${promoItem.image}" alt="">
             </div>
@@ -57,7 +57,7 @@ function generateFeaturedGamesSlider() {
         const itemDetails = findGameById(gameId);
 
         gameSliderHTML.innerHTML +=
-        `
+            `
             <div class="splide__slide">
                 <img src="${itemDetails.image}" alt="">
             </div>
@@ -80,7 +80,7 @@ async function generateFeaturedGame() {
         const featuredGame = findGameById(gameId);
 
         featuredGameHTML.innerHTML +=
-        `
+            `
             <div class="splide__slide">
                 <a href="./game-page/?productId=${gameId}">
                     <img src="${featuredGame.featuredImage}" alt="">
@@ -120,10 +120,21 @@ function generateGamesSliders(id, title, games) {
     gamesSliderHTML.innerHTML =
         `
         <div class="game-slide-header">
-            <div class="game-slide-title">${title}></div>
+            <div class="game-slide-title-arrow">
+                <div class="game-slide-title">
+                    ${title}
+                </div>
+                <div class="game-slide-arrow">
+                    <img class="arrow-icon" src="./icons/arrow.svg">
+                </div>
+            </div>
             <div class="browsing-btns">
-                <button id="prev-slide-${id}" class="js-prev-slide"><</button>
-                <button id="next-slide-${id}" class="js-next-slide">></button>
+                <button id="prev-slide-${id}" class="js-prev-slide">
+                    <img class="arrow-icon" src="./icons/arrow-back.svg">
+                </button>
+                <button id="next-slide-${id}" class="js-next-slide">
+                    <img class="arrow-icon" src="./icons/arrow.svg">
+                </button>
             </div>
         </div>
         <div id="slider-${id}" class="splide">

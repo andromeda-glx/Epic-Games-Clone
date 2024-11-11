@@ -154,16 +154,40 @@ main{
     justify-content: space-between;
 }
 
+.game-slide-title-arrow{
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    cursor: pointer;
+}
+
+.game-slide-arrow{
+    width: 17px;
+    transition: transform 0.2s;
+    position: relative;
+    top: 3px;
+}
+.game-slide-title-arrow:hover .game-slide-arrow{
+    transform: translate(5px);
+}
+
+.browsing-btns img{
+    width: 10px;
+    display: inline-block;
+}
+
 .browsing-btns button{
     width: 28px;
     height: 28px;
     border: none;
     border-radius: 50%;
-    background-color: #2cbcf5;
     color: white;
     background-color: rgb(58, 58, 58);
     font-weight: bold;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     display: none;
 }
 @media (min-width: 768px) {
