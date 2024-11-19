@@ -11,7 +11,7 @@ generateBottomHeader();
 generateGameHeader();
 
 function generateGameHeader() {
-    const gameHeaderElement = document.querySelector('.game-header-c');
+    const gameHeaderElement = document.querySelector('.game-title');
 
     gameHeaderElement.innerHTML = 
     `
