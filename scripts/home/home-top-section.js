@@ -66,7 +66,7 @@ function generateFeaturedGamesSlider() {
 
     let splide = new Splide('#slider1', {
         // type: 'loop',
-        padding: '3rem',
+        padding: '5%',
         arrows: false,
         gap: '15px'
     });

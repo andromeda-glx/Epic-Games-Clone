@@ -1,7 +1,7 @@
 export function generateHeader() {
     const headerElement = document.querySelector('header');
-    headerElement.innerHTML = 
-    `
+    headerElement.innerHTML =
+        `
         <div class="top-header">
             <nav class="left-section">
                 <ul class="left-section-items">
@@ -59,8 +59,9 @@ export function generateHeader() {
 export function generateBottomHeader() {
     const bottomHeaderElement = document.querySelector('.bottom-header');
 
-    bottomHeaderElement.innerHTML = 
-    `
+    bottomHeaderElement.innerHTML =
+        `
+            <div class = "bottom-left-section">
                 <div class="search-bar-c">
                     <input type="text" placeholder="Search store">
                     <div class="search-logo-c">
@@ -78,6 +79,11 @@ export function generateBottomHeader() {
                         News
                     </div>
                 </div>
+            </div>
+            <div class="discover-c-m">
+                Dicover
+            </div>
+            <div class="bottom-right-section">
                 <div class="wishlist-cart-c">
                     <div class="wishlist-c">
                         Wishlist
@@ -92,5 +98,6 @@ export function generateBottomHeader() {
                         <img src="./icons/shopping-cart-logo.svg">
                     </div>
                 </div>
+            </div>
     `;
 }
